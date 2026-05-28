@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- This tells browser which character set to use -->
+    <meta charset="UTF-8">
+
+    <!-- Makes website responsive on phones and laptops -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title shown on browser tab -->
+    <title>Smart Workplace Safety System</title>
+
+    <link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+    <!-- Connecting external CSS file -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet CSS for map styling -->
+<link 
+rel="stylesheet" 
+href="https://unpkg.com/leaflet/dist/leaflet.css"
+/>
+
+</head>
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+
+    <img
+    src="logo.png"
+    alt="Website Logo"
+    class="logo-image">
+
+</div>
+
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+
+            <li><a href="#dashboard-section">Dashboard</a></li>
+
+            <li><a href="#workers-section">Workers</a></li>
+
+            <li><a href="#">Tracking</a></li>
+
+            <li><a href="#">Alerts</a></li>
+
+            <li><a href="#">Analytics</a></li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- HERO SECTION -->
+    <section
+class="hero-section"
+id="dashboard-section">
+
+        <!-- LEFT CONTENT -->
+        <div class="hero-text">
+
+            <h1>
+                Smart<span> Workplace Safety </span>System
+            </h1>
+
+            <h2>
+                Real-Time Worker Monitoring Dashboard
+            </h2>
+
+            <p>
+                Live industrial worker safety monitoring using
+                ESP32, Firebase, GPS tracking and emergency
+                alert systems.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SENSOR DASHBOARD -->
+    <div class="dashboard">
+
+        <div class="card">
+            <h2>Temperature</h2>
+            <p id="temperature">34°C</p>
+        </div>
+
+        <div class="card">
+            <h2>Gas Level</h2>
+            <p id="gas">Safe</p>
+        </div>
+
+        <div class="card">
+            <h2>Helmet Status</h2>
+            <p id="helmet">Worn Properly</p>
+        </div>
+
+        <div class="card alert-card">
+            <h2>Fall Detection</h2>
+            <p id="fall">No Fall</p>
+        </div>
+
+    </div>
+
+    <!-- WORKERS SECTION -->
+
+<section id="workers-section">
+
+    <h1 class="workers-heading">
+        Worker Details Management
+    </h1>
+
+
+
+    <!-- Worker Cards -->
+
+    <div class="workers-container">
+
+        <!-- Worker 1 -->
+
+<div class="worker-card">
+
+    <h2>Enter worker details</h2>
+
+
+
+    <!-- Worker Name -->
+
+    <input
+    type="text"
+    placeholder="Enter Worker Name"
+    class="worker-name"
+    >
+
+
+
+    <!-- Worker ID -->
+
+    <input
+    type="text"
+    placeholder="Enter Worker ID"
+    class="worker-id"
+    >
+
+
+
+    <!-- Mobile Number -->
+
+    <input
+    type="text"
+    placeholder="Enter Mobile Number"
+    class="phone-input"
+    >
+
+
+
+    <!-- Save Button -->
+
+    <button class="save-btn">
+
+        Save Details
+
+    </button>
+
+
+
+    <!-- Save Message -->
+
+    <p class="save-message"></p>
+
+</div>
+
+<div class="saved-details">
+
+    <h3>Saved Worker Info</h3>
+
+    <p>
+        <strong>Name:</strong>
+        <span id="display-name">
+        
+        </span>
+    </p>
+
+    <p>
+        <strong>ID:</strong>
+        <span id="display-id">
+            
+        </span>
+    </p>
+
+    <p>
+        <strong>Mobile:</strong>
+        <span id="display-phone">
+            
+        </span>
+    </p>
+
+</div>
+   
+    </div>
+
+
+
+    <!-- Alert Simulation -->
+
+    <div class="sms-alert-panel">
+
+        <h2>Emergency SMS Alert System</h2>
+
+        <p>
+            Sends emergency warning messages to
+            saved mobile numbers during danger alerts.
+        </p>
+
+        <button id="send-alert-btn">
+
+            Trigger Emergency Alert
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+    <!-- Leaflet Map JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Your Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>
+
