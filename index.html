@@ -184,26 +184,23 @@ id="dashboard-section">
 
     <h3>Saved Worker Info</h3>
 
-    <p>
-        <strong>Name:</strong>
-        <span id="display-name">
-        
-        </span>
-    </p>
+    <div class="worker-table">
 
-    <p>
-        <strong>ID:</strong>
-        <span id="display-id">
-            
-        </span>
-    </p>
+        <div class="table-header">
 
-    <p>
-        <strong>Mobile:</strong>
-        <span id="display-phone">
-            
-        </span>
-    </p>
+            <span>Name</span>
+
+            <span>ID</span>
+
+            <span>Mobile Number</span>
+
+        </div>
+
+        <div id="worker-data-container">
+
+        </div>
+
+    </div>
 
 </div>
    
@@ -237,9 +234,13 @@ id="dashboard-section">
     <!-- Leaflet Map JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-    <!-- Your Script -->
-    <script src="script.js"></script>
+    <!-- Firebase SDK -->
 
+<script type="module" src="firebase.js"></script>
+
+    <!-- Existing JS -->
+
+<script src="script.js"></script>
 </body>
 </html>
 
