@@ -96,13 +96,13 @@ body {
 
 .hero-section {
 
-    padding: 50px 80px 40px;
+    padding: 100px 80px 10px;
 
     display: flex;
 
     align-items: center;
 
-    min-height: 50vh;
+    min-height: 32vh;
 }
 
 
@@ -110,7 +110,7 @@ body {
 
 .hero-text h1 {
 
-    font-size: 70px;
+    font-size: 65px;
 
     margin-bottom: 0px;
 }
@@ -670,4 +670,51 @@ html {
     margin-bottom: 15px;
 
     font-size: 18px;
+}
+
+/* WORKER TABLE */
+
+.worker-table {
+
+    margin-top: 20px;
+
+}
+
+
+
+/* TABLE HEADER */
+
+.table-header {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1.5fr;
+
+    color: #facc15;
+
+    font-weight: 600;
+
+    padding-bottom: 12px;
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.15);
+
+}
+
+
+
+/* TABLE DATA */
+
+.table-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1.5fr;
+
+    padding-top: 15px;
+
+    font-size: 17px;
+
+    color: white;
+
 }
