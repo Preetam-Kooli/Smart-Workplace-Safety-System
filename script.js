@@ -1,4 +1,17 @@
 
+window.addEventListener("load", () => {
+
+    // remove any #hash like #dashboard-section
+    if (window.location.hash) {
+        history.replaceState(null, null, " ");
+    }
+
+    // force page to start from top
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 0);
+
+});
 // Temperature value
 let temperature = 34;
 
@@ -222,132 +235,107 @@ workerIdInput.value;
         }
 
 
+// SAVE TO FIREBASE
 
-        // Save locally in browser
-
-       localStorage.setItem(
-    "workerName",
-    workerName
+const workersRef =
+window.ref(
+    window.database,
+    "workers"
 );
 
-localStorage.setItem(
-    "workerId",
-    workerId
+window.push(
+    workersRef,
+    {
+        name: workerName,
+        id: workerId,
+        phone: phoneNumber,
+        timestamp: Date.now()
+    }
 );
 
-localStorage.setItem(
-    "workerPhone",
-    phoneNumber
-);
+
+loadWorkers();
+
+
+// SUCCESS MESSAGE
+
+saveMessage.innerHTML =
+"Saved Successfully";
+
+saveMessage.style.color =
+"#22c55e";
+
+setTimeout(() => {
+
+    saveMessage.innerHTML = "";
+
+}, 4000);
 
 
 
-        // Success message
+// CLEAR INPUT FIELDS
 
-        saveMessage.innerHTML =
-        "Saved Successfully";
+workerNameInput.value = "";
 
-        // DISPLAY SAVED DATA
+workerIdInput.value = "";
 
-document.getElementById(
-    "display-name"
-).innerHTML = workerName;
-
-document.getElementById(
-    "display-id"
-).innerHTML = workerId;
-
-document.getElementById(
-    "display-phone"
-).innerHTML = phoneNumber;
-
-        saveMessage.style.color =
-        "#22c55e";
+phoneInput.value = "";
 
     });
 
 });
 
-// ----------------------------------
-// LOAD SAVED WORKER DETAILS
-// ----------------------------------
 
-const savedName =
-localStorage.getItem(
-    "workerName"
-);
+function loadWorkers() {
 
-const savedId =
-localStorage.getItem(
-    "workerId"
-);
-
-const savedPhone =
-localStorage.getItem(
-    "workerPhone"
-);
-
-
-
-// If saved data exists
-
-if(
-    savedName &&
-    savedId &&
-    savedPhone
-) {
-
-    // Refill input fields
-
-    document.querySelector(
-        ".worker-name"
-    ).value = savedName;
-
-
-
-    document.querySelector(
-        ".worker-id"
-    ).value = savedId;
-
-
-
-    document.querySelector(
-        ".phone-input"
-    ).value = savedPhone;
-
-
-
-    // Display beside form
-
+    const container =
     document.getElementById(
-        "display-name"
-    ).innerHTML = savedName;
+        "worker-data-container"
+    );
 
+    container.innerHTML = "";
 
+    const dbRef =
+    window.ref(
+        window.database
+    );
 
-    document.getElementById(
-        "display-id"
-    ).innerHTML = savedId;
+    window.get(
+        window.child(
+            dbRef,
+            "workers"
+        )
+    ).then((snapshot) => {
 
+        if (snapshot.exists() && snapshot.val()) {
 
+            const workers =
+            snapshot.val();
 
-    document.getElementById(
-        "display-phone"
-    ).innerHTML = savedPhone;
+            Object.values(workers)
+            .forEach((worker) => {
 
+                container.innerHTML += `
 
+                <div class="table-row">
 
-    // Optional success message
+                    <span>${worker.name}</span>
 
-    document.querySelector(
-        ".save-message"
-    ).innerHTML =
-    "Saved Details Loaded";
+                    <span>${worker.id}</span>
 
+                    <span>${worker.phone}</span>
 
+                </div>
 
-    document.querySelector(
-        ".save-message"
-    ).style.color =
-    "#22c55e";
+                `;
+
+            });
+
+        }
+
+    });
+
 }
+
+window.addEventListener("load", loadWorkers);
+
