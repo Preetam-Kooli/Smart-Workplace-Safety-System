@@ -47,11 +47,8 @@ href="https://unpkg.com/leaflet/dist/leaflet.css"
 
             <li><a href="#workers-section">Workers</a></li>
 
-            <li><a href="#">Tracking</a></li>
+            <li><a href="#tracking-section">Tracking</a></li>
 
-            <li><a href="#">Alerts</a></li>
-
-            <li><a href="#">Analytics</a></li>
 
         </ul>
 
@@ -229,7 +226,15 @@ id="dashboard-section">
 
 </section>
 
+<section id="tracking-section">
 
+    <h1 class="tracking-heading">
+    Live Worker Tracking
+</h1>
+
+    <div id="map"></div>
+
+</section>
 
     <!-- Leaflet Map JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -240,7 +245,25 @@ id="dashboard-section">
 
     <!-- Existing JS -->
 
-<script src="script.js"></script>
+<script src="script.js"></script><div id="emergencyPopup" class="popup">
+
+    <div class="popup-content">
+
+        <h1>🚨 EMERGENCY ALERT 🚨</h1>
+
+        <h2 id="alertType"></h2>
+
+        <p id="alertMessage"></p>
+
+        <button onclick="closePopup()">
+            Dashboard
+        </button>
+
+    </div>
+
+</div>
+
+
 </body>
 </html>
 
