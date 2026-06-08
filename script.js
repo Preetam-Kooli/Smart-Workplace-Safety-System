@@ -339,3 +339,90 @@ function loadWorkers() {
 
 window.addEventListener("load", loadWorkers);
 
+function showEmergencyPopup(type,message)
+{
+    document.getElementById("alertType").innerText = type;
+
+    document.getElementById("alertMessage").innerText = message;
+
+    document.getElementById("emergencyPopup").style.display = "block";
+}
+
+function closePopup()
+{
+    document.getElementById("emergencyPopup").style.display = "none";
+}
+
+// ----------------------------------
+// LIVE TRACKING MAP
+// ----------------------------------
+
+const map = L.map('map').setView(
+    [20.5937, 78.9629],
+    5
+);
+
+L.tileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+        attribution: 'OpenStreetMap'
+    }
+).addTo(map);
+
+if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const latitude =
+            position.coords.latitude;
+
+            const longitude =
+            position.coords.longitude;
+
+            map.setView(
+                [latitude, longitude],
+                18
+            );
+
+            // Accuracy Circle
+
+L.circle(
+    [latitude, longitude],
+    {
+        radius: 30,
+        color: '#4285F4',
+        fillColor: '#4285F4',
+        fillOpacity: 0.2,
+        weight: 2
+    }
+).addTo(map);
+
+
+// Blue Live Dot
+
+L.circleMarker(
+    [latitude, longitude],
+    {
+        radius: 8,
+        color: 'white',
+        weight: 2,
+        fillColor: '#4285F4',
+        fillOpacity: 1
+    }
+).addTo(map);
+
+        },
+
+        function(error) {
+
+            console.log(
+                "Location permission denied"
+            );
+
+        }
+
+    );
+
+}
