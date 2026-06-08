@@ -1,3 +1,44 @@
+let database;
+
+window.onFirebaseReady((db) => {
+
+    database = db;
+
+    const sensorRef =
+    window.ref(database, "sensorData");
+
+    window.onValue(
+        sensorRef,
+        (snapshot) => {
+
+            const data =
+            snapshot.val();
+
+            if(!data) return;
+
+            document.getElementById(
+                "temperature"
+            ).innerHTML =
+            data.temperature + "°C";
+
+            document.getElementById(
+                "gas"
+            ).innerHTML =
+            data.gasLevel;
+
+            document.getElementById(
+                "helmet"
+            ).innerHTML =
+            data.helmetStatus;
+
+            document.getElementById(
+                "fall"
+            ).innerHTML =
+            data.fallStatus;
+        }
+    );
+
+});
 
 window.addEventListener("load", () => {
 
@@ -12,27 +53,7 @@ window.addEventListener("load", () => {
     }, 0);
 
 });
-// Temperature value
-let temperature = 34;
 
-// Update temperature text
-document.getElementById("temperature").innerHTML =
-temperature + "°C";
-
-
-// Gas level
-document.getElementById("gas").innerHTML =
-"Safe";
-
-
-// Helmet status
-document.getElementById("helmet").innerHTML =
-"Worn Properly";
-
-
-// Fall detection
-document.getElementById("fall").innerHTML =
-"No Fall Detected";
 
 // -------------------------------
 // EMERGENCY ALERT DEMO
@@ -251,10 +272,11 @@ window.push(
         phone: phoneNumber,
         timestamp: Date.now()
     }
-);
+).then(() => {
 
+    loadWorkers();
 
-loadWorkers();
+});
 
 
 // SUCCESS MESSAGE
