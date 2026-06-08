@@ -6,8 +6,10 @@ import {
     ref,
     push,
     get,
-    child
+    child,
+    onValue
 }
+
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
@@ -45,6 +47,11 @@ window.ref = ref;
 window.push = push;
 window.get = get;
 window.child = child;
+window.onValue = onValue;
+window.onFirebaseReady = function(callback)
+{
+    callback(database);
+};
 
 console.log("Firebase Connected Successfully");
 console.log(database);
