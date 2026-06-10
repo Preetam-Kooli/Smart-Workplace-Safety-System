@@ -1,3 +1,10 @@
+let temperatureLabels = [];
+
+let temperatureValues = [];
+
+let temperatureChart;
+
+
 let database;
 
 window.onFirebaseReady((db) => {
@@ -35,6 +42,22 @@ window.onFirebaseReady((db) => {
                 "fall"
             ).innerHTML =
             data.fallStatus;
+
+           const currentTime =
+new Date().toLocaleTimeString();
+
+temperatureLabels.push(currentTime);
+
+temperatureValues.push(data.temperature);
+
+if(temperatureLabels.length > 300)
+{
+    temperatureLabels.shift();
+    temperatureValues.shift();
+}
+
+temperatureChart.update();
+
         }
     );
 
@@ -51,6 +74,50 @@ window.addEventListener("load", () => {
     setTimeout(() => {
         window.scrollTo(0, 0);
     }, 0);
+
+
+    // --------------------------
+    // TEMPERATURE GRAPH
+    // --------------------------
+
+    const ctx =
+    document.getElementById(
+        "temperatureChart"
+    );
+
+    temperatureChart =
+    new Chart(ctx,
+    {
+        type:"line",
+
+        data:
+        {
+            labels:temperatureLabels,
+
+            datasets:[
+            {
+                label:"Temperature °C",
+
+                data:temperatureValues,
+
+                borderColor:"#facc15",
+
+                backgroundColor:
+                "rgba(250,204,21,0.2)",
+
+                tension:0.4,
+
+                fill:true
+            }]
+        },
+
+        options:
+        {
+            responsive:true,
+
+            maintainAspectRatio:false
+        }
+    });
 
 });
 
