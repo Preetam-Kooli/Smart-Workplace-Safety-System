@@ -175,6 +175,7 @@ body {
     padding: 30px;
 
     transition: 0.3s;
+    
 }
 
 
@@ -738,4 +739,35 @@ html {
     margin-left: 80px;
 
     margin-bottom: 60px;
+}
+
+.analytics-heading {
+
+    font-size: 55px;
+    color: #facc15;
+    margin-top: 80px;
+    margin-left: 80px;
+}
+
+.analytics-card {
+
+    width: 45%;
+    margin-left: 60px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 70px;
+}
+
+#temperatureChart {
+
+    width: 100%;
+
+    height: 400px;
+
+}
+
+#analytics-section{
+    scroll-margin-top: 100px;
 }
