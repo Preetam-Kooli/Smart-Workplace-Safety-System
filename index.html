@@ -45,6 +45,8 @@ href="https://unpkg.com/leaflet/dist/leaflet.css"
 
             <li><a href="#dashboard-section">Dashboard</a></li>
 
+            <li><a href="#analytics-section">Analytics</a></li>
+
             <li><a href="#workers-section">Workers</a></li>
 
             <li><a href="#tracking-section">Tracking</a></li>
@@ -109,7 +111,21 @@ id="dashboard-section">
 
     </div>
 
-    <!-- WORKERS SECTION -->
+<section id="analytics-section">
+
+    <h1 class="analytics-heading">
+        Graphical Analytics
+    </h1>
+
+    <div class="analytics-card">
+
+        <canvas id="temperatureChart"></canvas>
+
+    </div>
+
+</section>
+
+<!-- WORKERS SECTION -->
 
 <section id="workers-section">
 
@@ -238,6 +254,10 @@ id="dashboard-section">
 
     <!-- Leaflet Map JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <!-- Firebase SDK -->
 
