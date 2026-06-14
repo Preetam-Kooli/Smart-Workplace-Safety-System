@@ -446,9 +446,13 @@ function closePopup()
 // LIVE TRACKING MAP
 // ----------------------------------
 
+// DSCE MAIN ENTRANCE
+const dsceLat = 12.909488;
+const dsceLng = 77.566772;
+
 const map = L.map('map').setView(
-    [20.5937, 78.9629],
-    5
+    [dsceLat, dsceLng],
+    16
 );
 
 L.tileLayer(
@@ -458,60 +462,74 @@ L.tileLayer(
     }
 ).addTo(map);
 
-if (navigator.geolocation) {
 
+// DSCE FIXED MARKER
+
+const dsceMarker = L.marker(
+    [dsceLat, dsceLng]
+)
+.addTo(map)
+.bindPopup("DSCE Main Entrance")
+.openPopup();
+
+
+// USER CURRENT LOCATION
+
+if (navigator.geolocation)
+{
     navigator.geolocation.getCurrentPosition(
 
-        function(position) {
-
-            const latitude =
+        function(position)
+        {
+            const userLat =
             position.coords.latitude;
 
-            const longitude =
+            const userLng =
             position.coords.longitude;
 
-            map.setView(
-                [latitude, longitude],
-                18
+
+            // User Blue Dot
+
+            L.circleMarker(
+                [userLat, userLng],
+                {
+                    radius: 8,
+                    color: "white",
+                    weight: 2,
+                    fillColor: "#4285F4",
+                    fillOpacity: 1
+                }
+            ).addTo(map)
+            .bindPopup("Current Location");
+
+
+            
+
+
+            // Fit both points
+
+            const group = L.featureGroup([
+                dsceMarker
+            ]);
+
+            group.addTo(map);
+
+            map.fitBounds(
+                [
+                    [userLat, userLng],
+                    [dsceLat, dsceLng]
+                ],
+                {
+                    padding: [50,50]
+                }
             );
-
-            // Accuracy Circle
-
-L.circle(
-    [latitude, longitude],
-    {
-        radius: 30,
-        color: '#4285F4',
-        fillColor: '#4285F4',
-        fillOpacity: 0.2,
-        weight: 2
-    }
-).addTo(map);
-
-
-// Blue Live Dot
-
-L.circleMarker(
-    [latitude, longitude],
-    {
-        radius: 8,
-        color: 'white',
-        weight: 2,
-        fillColor: '#4285F4',
-        fillOpacity: 1
-    }
-).addTo(map);
-
         },
 
-        function(error) {
-
+        function(error)
+        {
             console.log(
                 "Location permission denied"
             );
-
         }
-
     );
-
 }
