@@ -89,24 +89,36 @@ id="dashboard-section">
     <!-- SENSOR DASHBOARD -->
     <div class="dashboard">
 
-        <div class="card">
+        <div class="card" id="temperatureCard">
             <h2>Temperature</h2>
             <p id="temperature">34°C</p>
         </div>
 
-        <div class="card">
+        <div class="card" id="gasCard">
             <h2>Gas Level</h2>
             <p id="gas">Safe</p>
+
+<small id="gasValue">
+0 ADC
+</small>
         </div>
 
-        <div class="card">
-            <h2>Helmet Status</h2>
-            <p id="helmet">Worn Properly</p>
-        </div>
+       <div class="card" id="obstacleCard">
+    <h2>Obstacle Detection</h2>
+    <p id="obstacle">Clear</p>
 
-        <div class="card alert-card">
+<small id="obstacleDistance">
+0 cm
+</small>
+</div>
+
+        <div class="card alert-card" id="fallCard">
             <h2>Fall Detection</h2>
-            <p id="fall">No Fall</p>
+           <p id="fall">No Fall</p>
+
+<small id="tiltAngle">
+0°
+</small>
         </div>
 
     </div>
