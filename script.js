@@ -32,16 +32,95 @@ window.onFirebaseReady((db) => {
                 "gas"
             ).innerHTML =
             data.gasLevel;
+            document.getElementById(
+    "gasValue"
+).innerHTML =
+(data.gasValue || 0) + " ADC";
+
+const gasCard =
+document.getElementById(
+    "gasCard"
+);
+
+if(
+    data.gasLevel === "WARNING" ||
+    data.gasLevel === "DANGER"
+)
+{
+    gasCard.classList.add(
+        "danger-card"
+    );
+}
+else
+{
+    gasCard.classList.remove(
+        "danger-card"
+    );
+}
 
             document.getElementById(
-                "helmet"
+                "obstacle"
             ).innerHTML =
-            data.helmetStatus;
+            data.obstacleStatus;;
+            document.getElementById(
+    "obstacleDistance"
+).innerHTML =
+(data.obstacleDistance || 0) + " cm";
+
+const obstacleCard =
+document.getElementById(
+    "obstacleCard"
+);
+
+if(
+    data.obstacleStatus === "WARNING" ||
+    data.obstacleStatus === "DANGER"
+)
+{
+    obstacleCard.classList.add(
+        "danger-card"
+    );
+}
+else
+{
+    obstacleCard.classList.remove(
+        "danger-card"
+    );
+}
 
             document.getElementById(
                 "fall"
             ).innerHTML =
             data.fallStatus;
+            document.getElementById(
+    "tiltAngle"
+).innerHTML =
+Math.round(
+    data.tiltAngle || 0
+) + "°";
+
+const fallCard =
+document.getElementById(
+    "fallCard"
+);
+
+if(
+    data.fallStatus ===
+    "Fall Detected"
+)
+{
+    fallCard.classList.add(
+        "danger-card"
+    );
+}
+else
+{
+    fallCard.classList.remove(
+        "danger-card"
+    );
+}
+
+            
 
            const currentTime =
 new Date().toLocaleTimeString();
