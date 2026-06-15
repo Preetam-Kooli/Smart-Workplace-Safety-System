@@ -781,3 +781,60 @@ html {
 {
     display:none;
 }
+
+.card small{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-size:18px;
+
+    color:#d1d5db;
+
+    font-weight:500;
+}
+
+/* DANGER CARD EFFECT */
+
+.danger-card {
+
+    border: 3px solid #ef4444 !important;
+
+    box-shadow:
+    0 0 15px #ef4444,
+    0 0 30px #ef4444;
+
+    animation:
+    dangerBlink 1s infinite;
+}
+
+/* BLINK ANIMATION */
+
+@keyframes dangerBlink {
+
+    0% {
+
+        transform: scale(1);
+
+        box-shadow:
+        0 0 10px #ef4444;
+    }
+
+    50% {
+
+        transform: scale(1.03);
+
+        box-shadow:
+        0 0 35px #ef4444,
+        0 0 60px #ef4444;
+    }
+
+    100% {
+
+        transform: scale(1);
+
+        box-shadow:
+        0 0 10px #ef4444;
+    }
+}
